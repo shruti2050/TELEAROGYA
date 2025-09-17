@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TELEAROGYA/title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    /* Add a few custom styles for the project's unique animation and structure */
+    .animate-spin-slow {
+      animation: spin 3s linear infinite;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 8px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 10px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+    .whitespace-pre-line {
+        white-space: pre-line;
+    }
+    /* Simple fade-in effect for content sections */
+    .fade-in {
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* Animation for loading icon */
+    @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-white text-gray-800">
+
+  <div class="bg-teal-600 text-white shadow-lg">
+    <div class="max-w-6xl mx-auto p-4">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center gap-3">
+          <i data-lucide="activity" class="w-8 h-8"></i>
+          <div>
+            <h1 class="text-2xl font-bold" data-translate="title">TELEAROGYA</h1>
+            <p class="text-teal-100 text-sm" data-translate="subtitle">Your Complete Digital Health Companion</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <select id="language-select" class="bg-teal-700 text-white px-3 py-1 rounded border border-teal-500">
+            <option value="en">English</option>
+            <option value="hi">हिन्दी</option>
+            <option value="ta">தமிழ்</option>
+            <option value="te">తెలుగు</option>
+            <option value="bn">বাংলা</option>
+          </select>
+          <i data-lucide="globe" class="w-5 h-5"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-teal-50 border-b border-teal-200">
+    <div class="max-w-6xl mx-auto">
+      <nav class="flex" id="nav-tabs">
+        <button data-tab="home" class="nav-tab flex items-center gap-2 px-6 py-3 font-medium transition-colors bg-teal-600 text-white">
+          <i data-lucide="home" class="w-5 h-5"></i>
+          <span data-translate="home">Home</span>
+        </button>
+        <button data-tab="chat" class="nav-tab flex items-center gap-2 px-6 py-3 font-medium transition-colors text-teal-700 hover:bg-teal-100">
+          <i data-lucide="message-circle" class="w-5 h-5"></i>
+          <span data-translate="chat">AI Chat</span>
+        </button>
+        <button data-tab="symptoms" class="nav-tab flex items-center gap-2 px-6 py-3 font-medium transition-colors text-teal-700 hover:bg-teal-100">
+          <i data-lucide="activity" class="w-5 h-5"></i>
+          <span data-translate="symptoms">Symptoms Checker</span>
+        </button>
+        <button data-tab="resources" class="nav-tab flex items-center gap-2 px-6 py-3 font-medium transition-colors text-teal-700 hover:bg-teal-100">
+          <i data-lucide="file-text" class="w-5 h-5"></i>
+          <span data-translate="resources">Health Records</span>
+        </button>
+      </nav>
+    </div>
+  </div>
+
+  <div class="max-w-6xl mx-auto p-6" id="main-content">
+    
+    <div id="home-tab" class="content-tab fade-in">
+      <div class="text-center py-12 bg-gradient-to-br from-teal-50 to-blue-50 rounded-2xl mb-12">
+        <div class="max-w-4xl mx-auto px-6">
+          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Your Complete <span class="text-teal-600">Digital Health</span> Companion
+          </h1>
+          <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+            Access medical guidance, manage health records, and get reliable healthcare information 
+            even without internet connectivity
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <button id="get-started-btn" class="bg-teal-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-teal-700 transition-colors flex items-center gap-2 justify-center">
+              <i data-lucide="bot" class="w-5 h-5"></i>
+              <span data-translate="getStarted">Get Started</span>
+              <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </button>
+            <button class="border-2 border-teal-600 text-teal-600 px-8 py-4 rounded-xl font-semibold hover:bg-teal-50 transition-colors">
+              <span data-translate="learnMore">Learn More</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-gradient-to-r from-purple-600 to-teal-600 rounded-2xl p-8 mb-12 text-white">
+        <div class="text-center">
+          <div class="flex justify-center mb-4">
+            <div class="bg-white bg-opacity-20 rounded-full p-4">
+              <i data-lucide="zap" class="w-8 h-8"></i>
+            </div>
+          </div>
+          <h2 class="text-3xl font-bold mb-4" data-translate="innovation">AI Innovation</h2>
+          <p class="text-lg text-purple-100 max-w-3xl mx-auto leading-relaxed" data-translate="innovationDesc">
+            Our AI compares responses from multiple medical AI systems to provide you with the most accurate and reliable health guidance.
+          </p>
+          <div class="flex justify-center mt-6 gap-4 flex-wrap">
+            <div class="bg-white bg-opacity-20 rounded-lg px-4 py-2">
+              <span class="text-sm font-medium">OpenAI GPT-4</span>
+            </div>
+            <div class="bg-white bg-opacity-20 rounded-lg px-4 py-2">
+              <span class="text-sm font-medium">Claude AI</span>
+            </div>
+            <div class="bg-white bg-opacity-20 rounded-lg px-4 py-2">
+              <span class="text-sm font-medium">Google Gemini</span>
+            </div>
+            <div class="bg-white bg-opacity-20 rounded-lg px-4 py-2">
+              <span class="text-sm font-medium">Custom Medical AI</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-12">
+        <h2 class="text-3xl font-bold text-center text-gray-900 mb-12" data-translate="features">Key Features</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="features-grid">
+          </div>
+      </div>
+
+      <div class="bg-teal-600 rounded-2xl p-8 text-white text-center">
+        <h2 class="text-2xl font-bold mb-4">Ready to Transform Your Healthcare Experience?</h2>
+        <p class="text-teal-100 mb-6 max-w-2xl mx-auto">
+          Join thousands of users who trust our AI-powered healthcare platform for reliable medical guidance
+        </p>
+        <button id="cta-chat-btn" class="bg-white text-teal-600 px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-colors inline-flex items-center gap-2">
+          <i data-lucide="message-circle" class="w-5 h-5"></i>
+          Start Chatting with AI Doctor
+        </button>
+      </div>
+    </div>
+
+    <div id="chat-tab" class="content-tab hidden fade-in">
+      <div class="bg-white rounded-lg shadow-lg border border-teal-200">
+        <div class="p-6">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="bg-teal-600 p-2 rounded-lg">
+              <i data-lucide="bot" class="w-6 h-6 text-white"></i>
+            </div>
+            <div>
+              <h2 class="text-2xl font-semibold text-teal-700" data-translate="chat">AI Chat</h2>
+              <p class="text-sm text-gray-600">Powered by multiple AI systems for accurate responses</p>
+            </div>
+          </div>
+          
+          <div id="chat-window" class="h-96 bg-gray-50 rounded-lg p-4 mb-4 overflow-y-auto custom-scrollbar">
+            <div class="text-center text-gray-500 mt-20" id="chat-empty-state">
+              <i data-lucide="bot" class="w-16 h-16 mx-auto mb-4 text-teal-400"></i>
+              <h3 class="text-lg font-medium mb-2">AI Medical Assistant Ready</h3>
+              <p>Our AI compares responses from multiple medical AI systems to give you the most reliable advice</p>
+            </div>
+            </div>
+          
+          <div class="flex gap-2">
+            <input
+              type="text"
+              id="chat-input"
+              placeholder="Ask me about your health concerns..."
+              class="flex-1 p-3 border border-teal-300 rounded-lg focus:outline-none focus:border-teal-500"
+            />
+            <button id="send-btn" class="bg-teal-600 text-white px-4 py-3 rounded-lg hover:bg-teal-700 transition-colors">
+              <i data-lucide="send" class="w-5 h-5"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="symptoms-tab"  class="content-tab hidden fade-in">
+      <div class="bg-white rounded-lg shadow-lg border border-teal-200">
+        <div class="p-6">
+          <h2 class="text-2xl font-semibold text-teal-700 mb-4" data-translate="symptoms">Symptoms Checker</h2>
+          
+          <div class="mb-6">
+            <h3 class="text-lg font-medium mb-3" data-translate="selectSymptoms">Select your symptoms:</h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3" id="symptoms-grid">
+              </div>
+          </div>
+          
+          <button id="check-symptoms-btn" class="bg-teal-600 text-white px-6 py-3 rounded-lg hover:bg-teal-700 transition-colors disabled:opacity-50" disabled>
+            <span data-translate="checkSymptoms">Check Symptoms</span>
+          </button>
+          
+          <div id="diagnosis-result" class="mt-6 p-6 bg-teal-50 rounded-lg border border-teal-200 hidden">
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="resources-tab" class="content-tab hidden fade-in">
+      <div class="bg-white rounded-lg shadow-lg border border-teal-200">
+        <div class="p-6">
+          <h2 class="text-2xl font-semibold text-teal-700 mb-4" data-translate="resources">Health Records</h2>
+          
+          <div class="mb-6">
+            <label class="block" for="file-upload">
+              <input type="file" id="file-upload" class="hidden" accept=".pdf,.doc,.docx,.txt,.jpg,.png">
+              <div class="border-2 border-dashed border-teal-300 rounded-lg p-6 text-center cursor-pointer hover:border-teal-500 transition-colors">
+                <i data-lucide="upload" class="w-12 h-12 text-teal-400 mx-auto mb-3"></i>
+                <p class="text-teal-600 font-medium" data-translate="uploadDocument">Upload Document</p>
+                <p class="text-sm text-gray-500 mt-1">
+                  PDF, DOC, DOCX, TXT, JPG, PNG files supported
+                </p>
+              </div>
+            </label>
+          </div>
+          
+          <div id="documents-list" class="space-y-4">
+            <div class="text-center py-8 text-gray-500" id="no-documents-state">
+              <i data-lucide="file-text" class="w-12 h-12 mx-auto mb-3 text-teal-400"></i>
+              <p data-translate="noDocuments">No documents uploaded yet</p>
+            </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="bg-teal-50 border-t border-teal-200 p-6 mt-12">
+    <div class="max-w-6xl mx-auto text-center">
+      <p class="text-teal-600">
+        &copy; 2024 HealthCare Assistant. All rights reserved.
+      </p>
+    </div>
+  </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Lucide Icons initialization
+    lucide.createIcons();
+
+    // State Variables (equivalent to React's useState)
+    let activeTab = 'home';
+    let language = 'en';
+    let chatMessages = [];
+    let selectedSymptoms = [];
+    let diagnosis = null;
+    let documents = [];
+    let aiProcessing = false;
+
+    // DOM Elements
+    const navTabs = document.querySelectorAll('.nav-tab');
+    const contentTabs = document.querySelectorAll('.content-tab');
+    const languageSelect = document.getElementById('language-select');
+    const chatWindow = document.getElementById('chat-window');
+    const chatInput = document.getElementById('chat-input');
+    const sendBtn = document.getElementById('send-btn');
+    const chatEmptyState = document.getElementById('chat-empty-state');
+    const symptomsGrid = document.getElementById('symptoms-grid');
+    const checkSymptomsBtn = document.getElementById('check-symptoms-btn');
+    const diagnosisResult = document.getElementById('diagnosis-result');
+    const fileUploadInput = document.getElementById('file-upload');
+    const documentsList = document.getElementById('documents-list');
+    const noDocumentsState = document.getElementById('no-documents-state');
+    const ctaChatBtn = document.getElementById('cta-chat-btn');
+    const getStartedBtn = document.getElementById('get-started-btn');
+    const featuresGrid = document.getElementById('features-grid');
+
+    // Language translations
+    const translations = {
+        en: {
+            title: 'HealthCare Assistant',
+            subtitle: 'Your Complete Digital Health Companion',
+            chat: 'AI Chat',
+            symptoms: 'Symptoms Checker',
+            resources: 'Health Records',
+            language: 'Language',
+            sendMessage: 'Send message...',
+            selectSymptoms: 'Select your symptoms:',
+            checkSymptoms: 'Check Symptoms',
+            uploadDocument: 'Upload Document',
+            download: 'Download',
+            diagnosis: 'Diagnosis & Recommendations',
+            noDocuments: 'No documents uploaded yet',
+            chatPlaceholder: 'Ask me about your health concerns...',
+            getStarted: 'Get Started',
+            learnMore: 'Learn More',
+            features: 'Key Features',
+            innovation: 'AI Innovation',
+            innovationDesc: 'Our AI compares responses from multiple medical AI systems to provide you with the most accurate and reliable health guidance.',
+            home: 'Home'
+        },
+        hi: {
+            title: 'स्वास्थ्य सहायक',
+            subtitle: 'आपका संपूर्ण डिजिटल स्वास्थ्य साथी',
+            chat: 'एआई चैट',
+            symptoms: 'लक्षण जांचकर्ता',
+            resources: 'स्वास्थ्य रिकॉर्ड',
+            language: 'भाषा',
+            sendMessage: 'संदेश भेजें...',
+            selectSymptoms: 'अपने लक्षण चुनें:',
+            checkSymptoms: 'लक्षणों की जांच करें',
+            uploadDocument: 'दस्तावेज़ अपलोड करें',
+            download: 'डाउनलोड',
+            diagnosis: 'निदान और सिफारिशें',
+            noDocuments: 'अभी तक कोई दस्तावेज़ अपलोड नहीं किया गया',
+            chatPlaceholder: 'अपनी स्वास्थ्य चिंताओं के बारे में पूछें...',
+            getStarted: 'शुरू करें',
+            learnMore: 'और जानें',
+            features: 'मुख्य विशेषताएं',
+            innovation: 'एआई नवाचार',
+            innovationDesc: 'हमारा एआई कई चिकित्सा एआई सिस्टम की प्रतिक्रियाओं की तुलना करके आपको सबसे सटीक और विश्वसनीय स्वास्थ्य मार्गदर्शन प्रदान करता है।',
+            home: 'होम'
+        },
+        ta: {
+            title: 'சுகாதார உதவியாளர்',
+            subtitle: 'உங்கள் முழுமையான டிஜிட்டல் சுகாதார துணை',
+            chat: 'AI அரட்டை',
+            symptoms: 'அறிகுறி சோதனை',
+            resources: 'சுகாதார பதிவுகள்',
+            language: 'மொழி',
+            sendMessage: 'செய்தி அனுப்பு...',
+            selectSymptoms: 'உங்கள் அறிகுறிகளைத் தேர்ந்தெடுக்கவும்:',
+            checkSymptoms: 'அறிகுறிகளைச் சோதிக்கவும்',
+            uploadDocument: 'ஆவணத்தைப் பதிவேற்றவும்',
+            download: 'பதிவிறக்கம்',
+            diagnosis: 'நோயறிதல் மற்றும் பரிந்துரைகள்',
+            noDocuments: 'இன்னும் எந்த ஆவணமும் பதிவேற்றப்படவில்லை',
+            chatPlaceholder: 'உங்கள் சுகாதார கவலைகளைப் பற்றி கேளுங்கள்...',
+            getStarted: 'தொடங்கு',
+            learnMore: 'மேலும் அறிய',
+            features: 'முக்கிய அம்சங்கள்',
+            innovation: 'AI புதுமை',
+            innovationDesc: 'எங்கள் AI பல மருத்துவ AI அமைப்புகளின் பதில்களை ஒப்பிட்டு மிகவும் துல்லியமான மற்றும் நம்பகமான சுகாதார வழிகாட்டுதலை வழங்குகிறது।',
+            home: 'முகப்பு'
+        },
+        te: {
+            title: 'ఆరోగ్య సహాయకుడు',
+            subtitle: 'మీ పూర్తి డిజిటల్ ఆరోగ్య సహచరుడు',
+            chat: 'AI చాట్',
+            symptoms: 'లక్షణాల పరీక్ష',
+            resources: 'ఆరోగ్య రికార్డులు',
+            language: 'భాష',
+            sendMessage: 'సందేశం పంపండి...',
+            selectSymptoms: 'మీ లక్షణాలను ఎంచుకోండి:',
+            checkSymptoms: 'లక్షణాలను పరిశీలించండి',
+            uploadDocument: 'పత్రాన్ని అప్‌లోడ్ చేయండి',
+            download: 'డౌన్‌లోడ్',
+            diagnosis: 'నిర్ధారణ మరియు సిఫార్సులు',
+            noDocuments: 'ఇంకా ఎటువంటి పత్రాలు అప్‌లోడ్ చేయలేదు',
+            chatPlaceholder: 'మీ ఆరోగ్య ఆందోళనల గురించి అడగండి...',
+            getStarted: 'ప్రారంభించండి',
+            learnMore: 'మరింత తెలుసుకోండి',
+            features: 'ప్రధాన లక్షణాలు',
+            innovation: 'AI ఆవిష్కరణ',
+            innovationDesc: 'మా AI అనేక వైద్య AI వ్యవస్థల నుండి వచ్చే ప్రతిస్పందనలను పోల్చి మీకు అత్యంత ఖచ్చితమైన మరియు నమ్మదగిన ఆరోగ్య మార్గదర్శకత్వాన్ని అందిస్తుంది।',
+            home: 'హోమ్'
+        },
+        bn: {
+            title: 'স্বাস্থ্য সহায়ক',
+            subtitle: 'আপনার সম্পূর্ণ ডিজিটাল স্বাস্থ্য সহচর',
+            chat: 'AI চ্যাট',
+            symptoms: 'উপসর্গ পরীক্ষক',
+            resources: 'স্বাস্থ্য রেকর্ড',
+            language: 'ভাষা',
+            sendMessage: 'বার্তা পাঠান...',
+            selectSymptoms: 'আপনার উপসর্গগুলি নির্বাচন করুন:',
+            checkSymptoms: 'উপসর্গ পরীক্ষা করুন',
+            uploadDocument: 'নথি আপলোড করুন',
+            download: 'ডাউনলোড',
+            diagnosis: 'নির্ণয় এবং সুপারিশ',
+            noDocuments: 'এখনো কোনো নথি আপলোড করা হয়নি',
+            chatPlaceholder: 'আপনার স্বাস্থ্য সমস্যা সম্পর্কে জিজ্ঞাসা করুন...',
+            getStarted: 'শুরু করুন',
+            learnMore: 'আরও জানুন',
+            features: 'মূল বৈশিষ্ট্য',
+            innovation: 'AI উদ্ভাবন',
+            innovationDesc: 'আমাদের AI একাধিক চিকিৎসা AI সিস্টেমের প্রতিক্রিয়া তুলনা করে আপনাকে সবচেয়ে নির্ভুল এবং নির্ভরযোগ্য স্বাস্থ্য নির্দেশনা প্রদান করে।',
+            home: 'হোম'
+        }
+    };
+    
+    // Problem statement features
+    const features = [
+      {
+        icon: 'shield',
+        title: 'Offline Health Records',
+        description: 'Access your medical records anytime, even without internet connectivity',
+        color: 'bg-blue-50 border-blue-200 text-blue-700'
+      },
+      {
+        icon: 'stethoscope',
+        title: 'Offline Symptom Checker',
+        description: 'Get medical guidance in low-connectivity areas with our offline diagnostic tool',
+        color: 'bg-green-50 border-green-200 text-green-700'
+      },
+      {
+        icon: 'map-pin',
+        title: 'Real-Time Pharmacy Stock',
+        description: 'Check medicine availability before visiting, saving time and travel costs',
+        color: 'bg-purple-50 border-purple-200 text-purple-700'
+      },
+      {
+        icon: 'bot',
+        title: 'AI Medical Chatbot',
+        description: 'Get accurate, reliable medical advice from our advanced AI assistant',
+        color: 'bg-teal-50 border-teal-200 text-teal-700'
+      },
+      {
+        icon: 'clock',
+        title: 'Doctor Availability Tracker',
+        description: 'Real-time updates on doctor schedules to ensure access and save travel time',
+        color: 'bg-orange-50 border-orange-200 text-orange-700'
+      }
+    ];
+
+    // Sample symptoms data
+    const symptomsData = [
+      'Fever', 'Headache', 'Cough', 'Sore Throat', 'Fatigue', 
+      'Nausea', 'Dizziness', 'Chest Pain', 'Shortness of Breath',
+      'Joint Pain', 'Muscle Aches', 'Loss of Appetite', 'Rash'
+    ];
+
+    // Sample diagnosis database
+    const diagnosisDatabase = {
+      'cough,fever,headache': {
+        condition: 'Common Cold/Flu',
+        recommendations: [
+          'Rest and stay hydrated',
+          'Take over-the-counter pain relievers',
+          'Use throat lozenges for sore throat',
+          'Consider seeing a doctor if symptoms worsen'
+        ]
+      },
+      'chest_pain,shortness_of_breath': {
+        condition: 'Possible Respiratory Issue',
+        recommendations: [
+          'Seek immediate medical attention',
+          'Avoid strenuous activities',
+          'Monitor symptoms closely'
+        ]
+      },
+      'dizziness,fatigue,nausea': {
+        condition: 'Possible Dehydration/Low Blood Pressure',
+        recommendations: [
+          'Drink plenty of fluids',
+          'Rest in a cool place',
+          'Eat small, frequent meals',
+          'Consult a healthcare provider if symptoms persist'
+        ]
+      }
+    };
+
+    // --- Core Functions ---
+
+    const render = () => {
+        // Render tabs
+        navTabs.forEach(tab => {
+            if (tab.dataset.tab === activeTab) {
+                tab.classList.remove('text-teal-700', 'hover:bg-teal-100');
+                tab.classList.add('bg-teal-600', 'text-white');
+            } else {
+                tab.classList.remove('bg-teal-600', 'text-white');
+                tab.classList.add('text-teal-700', 'hover:bg-teal-100');
+            }
+        });
+
+        // Render content
+        contentTabs.forEach(tab => {
+            if (tab.id === `${activeTab}-tab`) {
+                tab.classList.remove('hidden');
+                // Re-create icons for the new tab's content
+                lucide.createIcons();
+            } else {
+                tab.classList.add('hidden');
+            }
+        });
+
+        // Render specific components based on active tab
+        switch(activeTab) {
+            case 'home':
+                renderHomeFeatures();
+                break;
+            case 'chat':
+                renderChatMessages();
+                break;
+            case 'symptoms':
+                renderSymptoms();
+                renderDiagnosis();
+                checkSymptomsBtn.disabled = selectedSymptoms.length === 0;
+                break;
+            case 'resources':
+                renderDocuments();
+                break;
+        }
+        
+        updateTranslations();
+    };
+
+    const updateTranslations = () => {
+        const currentTranslations = translations[language];
+        document.querySelectorAll('[data-translate]').forEach(el => {
+            const key = el.dataset.translate;
+            if (currentTranslations[key]) {
+                el.textContent = currentTranslations[key];
+            }
+        });
+        document.getElementById('chat-input').placeholder = currentTranslations['chatPlaceholder'];
+    };
+
+    // --- Home Tab Rendering ---
+    const renderHomeFeatures = () => {
+        featuresGrid.innerHTML = features.map(f => `
+            <div class="border-2 rounded-2xl p-6 ${f.color} hover:shadow-lg transition-all duration-300 hover:scale-105">
+              <div class="flex items-start gap-4">
+                <div class="p-3 bg-white rounded-xl shadow-sm">
+                  <i data-lucide="${f.icon}" class="w-6 h-6"></i>
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold mb-3">${f.title}</h3>
+                  <p class="text-gray-700 leading-relaxed">${f.description}</p>
+                </div>
+              </div>
+            </div>
+        `).join('');
+        lucide.createIcons();
+    };
+
+
+    // --- AI Chat Tab Functions ---
+
+    const renderChatMessages = () => {
+        chatWindow.innerHTML = '';
+        if (chatMessages.length === 0) {
+            chatEmptyState.classList.remove('hidden');
+        } else {
+            chatEmptyState.classList.add('hidden');
+            chatMessages.forEach(msg => {
+                const messageEl = document.createElement('div');
+                messageEl.className = `mb-4 ${msg.type === 'user' ? 'text-right' : 'text-left'}`;
+                messageEl.innerHTML = `
+                    <div class="inline-block p-4 rounded-lg max-w-md ${
+                        msg.type === 'user' 
+                          ? 'bg-teal-600 text-white' 
+                          : 'bg-white border border-teal-200 shadow-sm'
+                      }">
+                        ${msg.type === 'bot' ? `<div class="whitespace-pre-line">${msg.content}</div>` : msg.content}
+                    </div>
+                `;
+                chatWindow.appendChild(messageEl);
+            });
+            // Auto-scroll to the bottom
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+        }
+
+        // Add loading state
+        if (aiProcessing) {
+            const loadingEl = document.createElement('div');
+            loadingEl.className = "text-left mb-4";
+            loadingEl.innerHTML = `
+                <div class="inline-block p-4 bg-blue-50 border border-blue-200 rounded-lg max-w-md">
+                    <div class="flex items-center gap-3">
+                        <div class="animate-spin-slow">
+                            <i data-lucide="zap" class="w-5 h-5 text-blue-600"></i>
+                        </div>
+                        <div>
+                            <p class="font-medium text-blue-800">Processing with Multiple AI Systems...</p>
+                            <p class="text-sm text-blue-600">Comparing responses for best accuracy</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            chatWindow.appendChild(loadingEl);
+            lucide.createIcons();
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+        }
+
+        chatInput.disabled = aiProcessing;
+        sendBtn.disabled = aiProcessing;
+    };
+    
+    const simulateMultipleAIResponse = async (message) => {
+      aiProcessing = true;
+      renderChatMessages();
+
+      // Simulate multiple API calls
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      const aiResponses = {
+        openai: "Based on medical literature, I recommend consulting with a healthcare professional for a proper evaluation of your symptoms.",
+        claude: "Your symptoms suggest the need for professional medical assessment. Here are some general guidelines to consider.",
+        gemini: "From a medical perspective, it's important to get these symptoms evaluated by a qualified healthcare provider.",
+        custom: "Analyzing your health concern through multiple medical knowledge bases to provide the most accurate guidance."
+      };
+      
+      const bestResponse = `🤖 **AI Analysis Complete** After comparing responses from 4 different medical AI systems (OpenAI GPT-4, Claude, Google Gemini, and our custom medical model), here's the consensus:
+
+${aiResponses.openai}
+
+**Key Recommendations:**
+• Schedule an appointment with your healthcare provider
+• Monitor your symptoms and keep a detailed log  
+• Stay hydrated and get adequate rest
+• Seek immediate care if symptoms worsen
+
+*This advice is generated from multiple AI medical systems to ensure accuracy and reliability.*`;
+
+      aiProcessing = false;
+      return bestResponse;
+    };
+
+    const sendMessage = async () => {
+      const chatInputEl = document.getElementById('chat-input');
+      const input = chatInputEl.value.trim();
+      if (!input) return;
+      
+      const userMessage = { type: 'user', content: input };
+      chatMessages = [...chatMessages, userMessage];
+      chatInputEl.value = '';
+      
+      renderChatMessages();
+
+      const aiResponse = await simulateMultipleAIResponse(input);
+      const botMessage = { type: 'bot', content: aiResponse };
+      chatMessages = [...chatMessages, botMessage];
+      renderChatMessages();
+    };
+
+    // --- Symptoms Checker Tab Functions ---
+
+    const renderSymptoms = () => {
+        symptomsGrid.innerHTML = symptomsData.map(symptom => {
+            const isSelected = selectedSymptoms.includes(symptom);
+            return `
+                <button
+                  data-symptom="${symptom}"
+                  class="symptom-btn p-3 rounded-lg border-2 transition-all ${
+                    isSelected
+                      ? 'border-teal-500 bg-teal-50 text-teal-700'
+                      : 'border-gray-200 hover:border-teal-300'
+                  }"
+                >
+                  <div class="flex items-center justify-between">
+                    <span>${symptom}</span>
+                    ${isSelected ? '<i data-lucide="check" class="w-4 h-4 text-teal-600"></i>' : ''}
+                  </div>
+                </button>
+            `;
+        }).join('');
+        lucide.createIcons();
+
+        document.querySelectorAll('.symptom-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const symptom = button.dataset.symptom;
+                toggleSymptom(symptom);
+            });
+        });
+    };
+
+    const toggleSymptom = (symptom) => {
+      const index = selectedSymptoms.indexOf(symptom);
+      if (index > -1) {
+          selectedSymptoms.splice(index, 1);
+      } else {
+          selectedSymptoms.push(symptom);
+      }
+      renderSymptoms();
+      checkSymptomsBtn.disabled = selectedSymptoms.length === 0;
+    };
+    
+    const checkSymptoms = () => {
+      const symptomsKey = [...selectedSymptoms].sort().map(s => s.toLowerCase().replace(/ /g, '_')).join(',');
+      const result = diagnosisDatabase[symptomsKey] || {
+          condition: 'General Health Concern',
+          recommendations: [
+              'Monitor your symptoms',
+              'Stay hydrated and get adequate rest',
+              'Consult a healthcare provider for proper evaluation',
+              'Keep a symptom diary'
+          ]
+      };
+      diagnosis = result;
+      renderDiagnosis();
+    };
+
+    const renderDiagnosis = () => {
+        if (diagnosis) {
+            diagnosisResult.classList.remove('hidden');
+            diagnosisResult.innerHTML = `
+                <h3 class="text-xl font-semibold text-teal-700 mb-3" data-translate="diagnosis">Diagnosis & Recommendations</h3>
+                <div class="mb-4">
+                  <h4 class="font-medium text-lg">${diagnosis.condition}</h4>
+                </div>
+                <div>
+                  <h4 class="font-medium mb-2">Recommendations:</h4>
+                  <ul class="list-disc list-inside space-y-1">
+                    ${diagnosis.recommendations.map(rec => `<li>${rec}</li>`).join('')}
+                  </ul>
+                </div>
+                <div class="mt-4 p-3 bg-orange-100 rounded-lg border border-orange-300">
+                  <p class="text-sm text-orange-800">
+                    <strong>Disclaimer:</strong> This is not a substitute for professional medical advice. 
+                    Please consult with a healthcare provider for accurate diagnosis and treatment.
+                  </p>
+                </div>
+            `;
+            updateTranslations();
+        } else {
+            diagnosisResult.classList.add('hidden');
+        }
+    };
+
+    // --- Health Resources Tab Functions ---
+    
+    const renderDocuments = () => {
+        documentsList.innerHTML = '';
+        if (documents.length === 0) {
+            noDocumentsState.classList.remove('hidden');
+        } else {
+            noDocumentsState.classList.add('hidden');
+            documents.forEach(doc => {
+                const docEl = document.createElement('div');
+                docEl.className = "flex items-center justify-between p-4 border border-teal-200 rounded-lg";
+                docEl.innerHTML = `
+                    <div class="flex items-center gap-3">
+                      <i data-lucide="file-text" class="w-8 h-8 text-teal-600"></i>
+                      <div>
+                        <h4 class="font-medium">${doc.name}</h4>
+                        <p class="text-sm text-gray-500">
+                          ${(doc.size / 1024).toFixed(1)} KB • ${doc.uploadDate}
+                        </p>
+                      </div>
+                    </div>
+                    <button class="download-btn flex items-center gap-2 px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors">
+                      <i data-lucide="download" class="w-4 h-4"></i>
+                      <span data-translate="download">Download</span>
+                    </button>
+                `;
+                docEl.querySelector('.download-btn').addEventListener('click', () => {
+                    alert(`Downloading ${doc.name}...`);
+                });
+                documentsList.appendChild(docEl);
+            });
+            lucide.createIcons();
+            updateTranslations();
+        }
+    };
+
+    const handleFileUpload = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const newDoc = {
+                id: Date.now(),
+                name: file.name,
+                size: file.size,
+                uploadDate: new Date().toLocaleDateString()
+            };
+            documents = [...documents, newDoc];
+            renderDocuments();
+        }
+    };
+    
+
+    // --- Event Listeners ---
+    navTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            activeTab = tab.dataset.tab;
+            render();
+        });
+    });
+
+    languageSelect.addEventListener('change', (e) => {
+        language = e.target.value;
+        render();
+    });
+
+    sendBtn.addEventListener('click', sendMessage);
+    chatInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        sendMessage();
+      }
+    });
+
+    checkSymptomsBtn.addEventListener('click', checkSymptoms);
+    
+    fileUploadInput.addEventListener('change', handleFileUpload);
+    
+    ctaChatBtn.addEventListener('click', () => {
+        activeTab = 'chat';
+        render();
+    });
+
+    getStartedBtn.addEventListener('click', () => {
+        activeTab = 'chat';
+        render();
+    });
+
+    // Initial render
+    render();
+});
+</script>
+
+</body>
+</html>
